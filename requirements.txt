@@ -3,5 +3,5 @@ uvicorn[standard]==0.23.2
 groq==0.4.1
 google-generativeai==0.3.2
 google-ai-generativelanguage==0.4.0
-Pillow==10.20.0
+Pillow==10.2.0
 Marker==2.1.5

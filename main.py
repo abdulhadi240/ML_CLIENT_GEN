@@ -14,6 +14,14 @@ from groq import Groq
 app : FastAPI = FastAPI()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 GOOGLE_AI_STUDIO = "AIzaSyAK6vhyL_4BvSlHZgY3YjSTVePzU5ZiIUM"
 genai.configure(api_key=GOOGLE_AI_STUDIO)
 model = genai.GenerativeModel('gemini-pro-vision')

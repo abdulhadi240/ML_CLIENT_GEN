@@ -1,18 +1,14 @@
+from fastapi import FastAPI, Depends, HTTPException, Query, status , Body , Header
 import PIL
 import google.generativeai as genai
-from sqlalchemy import create_engine, text
-from fastapi import FastAPI, Depends, HTTPException, Query, status , Body , Header
-from typing import Annotated
-from typing import Optional
-from pydantic import BaseModel
-from groq import Groq
-from IPython.display import Markdown
 import requests 
 from io import BytesIO
+from Classes import CheckProfile
+import os
 
-GOOGLE_AI_STUDIO = "AIzaSyAK6vhyL_4BvSlHZgY3YjSTVePzU5ZiIUM"
 
-genai.configure(api_key=GOOGLE_AI_STUDIO)
+api_key = os.getenv('GOOGLE_AI_KEY')
+genai.configure(api_key=f'{api_key}')
 
 model = genai.GenerativeModel('gemini-pro-vision')
 
@@ -22,8 +18,6 @@ def load_image_from_url(image_url):
     return image
 
 
-class CheckProfile(BaseModel):
-    image_url: str | None = None
 
 # Function to check profile
 def check_profile(image_data: CheckProfile = Body(...)) -> str:

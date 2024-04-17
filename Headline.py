@@ -1,16 +1,13 @@
 from fastapi import FastAPI, Depends, HTTPException, Query, status , Body , Header
-from typing import Annotated
-from typing import Optional
-from pydantic import BaseModel
 from groq import Groq
+from Classes import HeadlineRequest
+import os
 
-
-class HeadlineRequest(BaseModel):
-    prev_headline: str
+api_key = os.getenv('GROQ_API_KEY')
 
 def headline_check(feild : str = Query(None) , subfeild : str = Query(None) ,  Prev_headline : HeadlineRequest = Body(...) ) -> str :
     if feild and subfeild :
-        client = Groq(api_key='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')
+        client = Groq(api_key=f"{api_key}")
         completion = client.chat.completions.create(
             model="mixtral-8x7b-32768",
             messages=[

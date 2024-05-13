@@ -2,11 +2,10 @@ from fastapi import FastAPI, Depends, HTTPException, Query, status , Body , Head
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Annotated
-from Banner import check_banner
-from Authentication import check_token
-from Headline import headline_check
+from model1 import check_Gem
+from model2 import Data_Gro
 from Profile import check_profile
-from Resume import check_resume
+from model3 import check_resume
 
 
 
@@ -22,35 +21,23 @@ app.add_middleware(
 )
 
 
-@app.post("/api/v1/banner")
-def Analyze_Banner(banner : Annotated[str, Depends(check_banner)] , authorization : Annotated[bool , Depends(check_token)]):
-    if authorization == True :
-        return {'Data' : banner}
-    else :
-        return {'Failed' : 'Invalid Token'} 
+@app.post("/api/v1/XG_Boost")
+def XG_Boost(data : Annotated[str, Depends(check_Gem)]):
+    return {'Data' : data}
+
+
+@app.post("/api/v1/LSTM")
+def LSTM(data: Annotated[str, Depends(Data_Gro)]):
+   return {'Data' : data}
+    
     
 
 
-@app.post("/api/v1/headline")
-def Analyze_Headline(headline: Annotated[str, Depends(headline_check)], authorization : Annotated[bool , Depends(check_token)]):
-    if authorization == True :
-        return {'Data' : headline}
-    else :
-        return {'Failed' : 'Invalid Token'} 
-    
+@app.post("/api/v1/Vector_Auto_Regression")
+def VAR(data : Annotated[str, Depends(check_resume)]):
+    return {'Data' : data}
 
 
-@app.post("/api/v1/profile")
-def Analyze_Profile(profile : Annotated[str, Depends(check_profile)], authorization : Annotated[bool , Depends(check_token)]):
-    if authorization == True :
-        return {'Data' : profile}
-    else :
-        return {'Failed' : 'Invalid Token'} 
-
-
-@app.post("/api/v1/resume")
-def Analyze_Resume(resume: Annotated[str , Depends(check_resume)], authorization : Annotated[bool , Depends(check_token)]):
-    if authorization == True :
-        return {'Data' : resume}
-    else :
-        return {'Failed' : 'Invalid Token'} 
+@app.post("/")
+def Data_Checking():
+   return 'api working'

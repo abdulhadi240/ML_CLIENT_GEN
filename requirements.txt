@@ -5,3 +5,4 @@ Pillow==10.2.0
 Marker==2.1.5
 openai==1.19.0
 uvicorn
+fastapi

@@ -1,7 +1,5 @@
 from openai import OpenAI
-
 from fastapi import FastAPI, Body
-from pydantic import BaseModel
 import os
 
 

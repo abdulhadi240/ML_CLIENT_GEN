@@ -1,9 +1,5 @@
-import PIL
 import google.generativeai as genai
 from fastapi import FastAPI, Body
-from pydantic import BaseModel
-import requests 
-from io import BytesIO
 import os
 
 api_key = os.getenv('GOOGLE_AI_KEY')

@@ -1,6 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException, Query, status , Body , Header
 from groq import Groq
-from Classes import HeadlineRequest
 import os
 
 api_key = os.getenv('GROQ_API_KEY')

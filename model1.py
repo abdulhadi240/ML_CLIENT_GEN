@@ -4,11 +4,10 @@ from fastapi import FastAPI, Body
 from pydantic import BaseModel
 import requests 
 from io import BytesIO
-from Classes import CheckBanner
 import os
 
 api_key = os.getenv('GOOGLE_AI_KEY')
-genai.configure(api_key="AIzaSyByQn7n4wEEH-5sPFbFiikkLq2SyXuSOdg")
+genai.configure(api_key=f"{api_key}")
 model = genai.GenerativeModel('gemini-1.0-pro')
 
     

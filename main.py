@@ -4,7 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import Annotated
 from model1 import check_Gem
 from model2 import Data_Gro
-from Profile import check_profile
 from model3 import check_resume
 
 

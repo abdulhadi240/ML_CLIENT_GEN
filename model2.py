@@ -8,7 +8,7 @@ api_key1 = os.getenv('OPEN_AI_API')
 
 client = OpenAI(api_key=f"{api_key1}")
 client1 = Groq(api_key=f"{api_key}")
-def Data_Gro() -> str :
+def Data_Gro() -> dict :
         
         completion = client1.chat.completions.create(
         model="llama3-70b-8192",

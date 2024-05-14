@@ -8,7 +8,7 @@ api_key = os.getenv('OPEN_AI_API')
 client = OpenAI(api_key=f"{api_key}")
 
 
-def check_resume() -> str :
+def check_resume() -> dict :
   response = client.chat.completions.create(
   model="gpt-3.5-turbo",
   response_format={ "type": "json_object" },

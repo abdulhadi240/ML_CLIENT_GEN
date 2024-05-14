@@ -21,21 +21,20 @@ app.add_middleware(
 
 
 @app.post("/api/v1/XG_Boost")
-def XG_Boost(data : Annotated[str, Depends(check_Gem)]):
-    return {'Data' : data}
+def XG_Boost(data : Annotated[dict, Depends(check_Gem)]):
+    return data
 
 
 @app.post("/api/v1/LSTM")
-def LSTM(data: Annotated[str, Depends(Data_Gro)]):
-   return {'Data' : data}
+def LSTM(data: Annotated[dict, Depends(Data_Gro)]):
+   return data
     
     
 
 
 @app.post("/api/v1/Vector_Auto_Regression")
-def VAR(data : Annotated[str, Depends(check_resume)]):
-    return {'Data' : data}
-
+def VAR(data : Annotated[dict, Depends(check_resume)]):
+    return data
 
 @app.post("/")
 def Data_Checking():
